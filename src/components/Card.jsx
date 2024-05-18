@@ -21,10 +21,13 @@ export default function ({ data }) {
   }, []);
   const handleLike = async () => {
     try {
-      const like = await axios.post(`http://localhost:3000/api/prop/like`, {
-        propId: data._id,
-        userId: currentUser._id,
-      });
+      const like = await axios.post(
+        `https://rentifyserver.onrender.com/api/prop/like`,
+        {
+          propId: data._id,
+          userId: currentUser._id,
+        }
+      );
       if (like.data.message === "Liked") {
         setLiked(true);
       } else {
@@ -43,7 +46,7 @@ export default function ({ data }) {
     // send email to the owner of the property and the user
     try {
       const sendEmail = await axios.post(
-        `http://localhost:3000/api/prop/contact`,
+        `https://rentifyserver.onrender.com/api/prop/contact`,
         { user: currentUser, propId: data._id }
       );
       if (sendEmail.status === 200) {

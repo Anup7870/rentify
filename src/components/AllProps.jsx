@@ -23,7 +23,7 @@ export default function AllProps() {
     const func = async () => {
       try {
         const api = await axios.get(
-          `http://localhost:3000/api/prop/get?userId=${currentUser._id}`
+          `https://rentifyserver.onrender.com/api/prop/get?userId=${currentUser._id}`
         );
         console.log(api.data.prop);
         setData(api.data.prop);
@@ -38,7 +38,7 @@ export default function AllProps() {
     setDisabled(true);
     try {
       const api = await axios.delete(
-        `http://localhost:3000/api/prop/delete?propId=${id}`
+        `https://rentifyserver.onrender.com/api/prop/delete?propId=${id}`
       );
       console.log(api);
       if (api.status === 200) {

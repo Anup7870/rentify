@@ -26,7 +26,10 @@ export default function Signup() {
     console.log(e);
     try {
       dispatch(signinStart());
-      const api = await axios.post("http://localhost:3000/api/auth/signin", e);
+      const api = await axios.post(
+        "https://rentifyserver.onrender.com/api/auth/signin",
+        e
+      );
       console.log(api.data);
       // set toekn in cookie
       // document.cookie = `token=${api.data.token}`

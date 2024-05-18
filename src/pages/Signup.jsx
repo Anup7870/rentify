@@ -17,7 +17,10 @@ export default function Signup() {
   } = useForm();
   const onSubmit = async (e) => {
     console.log(e);
-    const api = await axios.post("http://localhost:3000/api/auth/signup", e);
+    const api = await axios.post(
+      "https://rentifyserver.onrender.com/api/auth/signup",
+      e
+    );
     if (api.status === 201) {
       navigate("/signin");
     }

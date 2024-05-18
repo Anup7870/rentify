@@ -12,7 +12,9 @@ export default function Nav() {
     // remove data front the redux store
     console.log("Called");
     try {
-      const signout = await axios.get("http://localhost:3000/api/auth/logout");
+      const signout = await axios.get(
+        "https://rentifyserver.onrender.com/api/auth/logout"
+      );
       console.log(signout);
       if (signout.status === 200) {
         // clear local storage

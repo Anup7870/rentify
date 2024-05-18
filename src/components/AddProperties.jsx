@@ -183,7 +183,10 @@ export default function AddProperties() {
       image: images,
     };
     console.log(data);
-    const api = await axios.post("http://localhost:3000/api/prop/create", data);
+    const api = await axios.post(
+      "https://rentifyserver.onrender.com/api/prop/create",
+      data
+    );
     if (api.status === 201) {
       // alert("Property added successfully")
       setDisabled(false);
