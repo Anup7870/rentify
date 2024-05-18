@@ -1,7 +1,7 @@
 import { Sidebar } from "flowbite-react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   HiArrowSmRight,
   HiChartPie,
@@ -29,8 +29,8 @@ export default function DashSidebar() {
   }, [location.search]);
   return (
     <Sidebar
-      aria-label="Sidebar with multi-level dropdown example h-screen "
-      className="w-full md:w-56 absoute bottom-0"
+      aria-label="Sidebar with multi-level dropdown example  "
+      className="w-full md:w-56  "
     >
       <Sidebar.Items>
         <Sidebar.ItemGroup>
@@ -58,12 +58,20 @@ export default function DashSidebar() {
             <Sidebar.Item href="#">Refunds</Sidebar.Item>
             <Sidebar.Item href="#">Shipping</Sidebar.Item>
           </Sidebar.Collapse> */}
-          <Sidebar.Item href="#" icon={HiInbox} active={tab === "properties"}>
-            Properties
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={IoAddCircleSharp} active={tab === "add"}>
-            Add properties
-          </Sidebar.Item>
+          <Link to={`/dashboard?tab=prop`}>
+            <Sidebar.Item href="#" icon={HiInbox} active={tab === "properties"}>
+              Properties
+            </Sidebar.Item>
+          </Link>
+          <Link to={`/dashboard?tab=add`}>
+            <Sidebar.Item
+              href="#"
+              icon={IoAddCircleSharp}
+              active={tab === "add"}
+            >
+              Add properties
+            </Sidebar.Item>
+          </Link>
 
           <Sidebar.Item href="#" icon={HiTable}>
             Sign out

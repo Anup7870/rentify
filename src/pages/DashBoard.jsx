@@ -18,11 +18,11 @@ export default function DashBoard() {
     }
   }, [location.search]);
   return (
-    <div className="flex h-screen w-full flex-col md:flex-row">
-      <div className="w-full md:w-56">
+    <div className="flex h-screen w-full flex-col md:flex-row absolute">
+      <div className="w-full md:w-56 relative left-0">
         <DashSidebar />
       </div>
-      <div className="w-full h-screen overflow-auto">
+      <div className="w-full h-screen ">
         {tab === "properties" && <DashProperties />}
         {tab === "add" && <AddProperties />}
         {tab === "prop" && <AllProps />}

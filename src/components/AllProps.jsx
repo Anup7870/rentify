@@ -5,13 +5,21 @@ import { CiHospital1 } from "react-icons/ci";
 import { MdOutlineSchool } from "react-icons/md";
 import { FaCampground } from "react-icons/fa";
 import { Button } from "flowbite-react";
+import { Pagination } from "flowbite-react";
 export default function AllProps() {
   const { currentUser } = useSelector((state) => state.user);
   const [data, setData] = useState([]);
   const [disabled, setDisabled] = useState(false);
-  console.log(data);
-  console.log(currentUser._id);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+
+  const onPageChange = (page) => setCurrentPage(page);
   useEffect(() => {
+    console.log("claiing");
     const func = async () => {
       try {
         const api = await axios.get(
@@ -45,11 +53,11 @@ export default function AllProps() {
       <p className="font-semibold text-xl py-3 border-b w-full">
         All properties
       </p>
-      <section>
-        <div className="flex flex-wrap mt-3">
-          {Array.isArray(data) &&
-            data.map((item) => (
-              <div className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4">
+      <section className="overflow-auto">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 mt-3">
+          {Array.isArray(currentItems) &&
+            currentItems.map((item) => (
+              <div className="w-full ">
                 <div className="bg-white shadow-md rounded-md pb-2">
                   <img src={item.image} alt="" className=" w-full h-44" />
                   <div className="px-2">
@@ -97,8 +105,8 @@ export default function AllProps() {
                     <Button
                       color="failure"
                       className="mt-2"
-                      disabled={disabled}
-                      //   onClick={handleCLick(item._id)}
+                      //   disabled={disabled}
+                      onClick={() => handleCLick(item._id)}
                     >
                       Delete
                     </Button>
@@ -106,6 +114,14 @@ export default function AllProps() {
                 </div>
               </div>
             ))}
+        </div>
+        <div className="flex overflow-x-auto sm:justify-center w-full items-center justify-center mb-10 mt-5">
+          <Pagination
+            layout="table"
+            currentPage={currentPage}
+            totalPages={data.length}
+            onPageChange={onPageChange}
+          />
         </div>
       </section>
     </div>

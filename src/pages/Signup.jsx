@@ -19,7 +19,7 @@ export default function Signup() {
     console.log(e);
     const api = await axios.post("http://localhost:3000/api/auth/signup", e);
     if (api.status === 201) {
-      navigate("/");
+      navigate("/signin");
     }
   };
   return (

@@ -1,12 +1,29 @@
 import { Button, Navbar, Dropdown, Avatar } from "flowbite-react";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { signOut } from "../redux/user/userSlice.js";
+import axios from "axios";
 export default function Nav() {
   const [isAdmin, setIsAdmin] = useState(false);
   const { currentUser } = useSelector((state) => state.user);
-  const signOut = () => {
+  const dispatch = useDispatch();
+  const signOuts = async () => {
     // remove data front the redux store
+    console.log("Called");
+    try {
+      const signout = await axios.get("http://localhost:3000/api/auth/logout");
+      console.log(signout);
+      if (signout.status === 200) {
+        // clear local storage
+        console.log("ok");
+        localStorage.removeItem("token");
+        dispatch(signOut());
+        window.location.href = "/";
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <Navbar fluid rounded className="border-b-2 !px-10 z-50">
@@ -37,14 +54,18 @@ export default function Nav() {
                   {currentUser.email}
                 </span>
               </Dropdown.Header>
-              <Link to="/dashboard">
-                <Dropdown.Item>Dashboard</Dropdown.Item>
-              </Link>
+              {currentUser.role === "seller" && (
+                <Link to="/dashboard">
+                  <Dropdown.Item>Dashboard</Dropdown.Item>
+                </Link>
+              )}
 
               <Dropdown.Item>Settings</Dropdown.Item>
 
               <Dropdown.Divider />
-              <Dropdown.Item onClick={signOut}>Sign out</Dropdown.Item>
+              <Dropdown.Item onClick={signOuts} as="div">
+                Sign out
+              </Dropdown.Item>
             </Dropdown>
             <Navbar.Toggle />
           </>

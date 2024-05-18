@@ -102,7 +102,7 @@ export default function ({ data }) {
               I'm Intrested
             </Button>
 
-            <div className="flex">
+            <div className="flex items-center">
               {liked ? (
                 <AiFillLike
                   fill="red"

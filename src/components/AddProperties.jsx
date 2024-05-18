@@ -25,6 +25,7 @@ export default function AddProperties() {
   const [bed, setBed] = useState(1);
   const [bath, setBath] = useState(1);
   const [for_, setFor] = useState("rent");
+  const [disabled, setDisabled] = useState(false);
   const city = [
     "Delhi",
     "Mumbai",
@@ -170,6 +171,7 @@ export default function AddProperties() {
   // callin the api
 
   const onSubmit = async (datas) => {
+    setDisabled(true);
     const data = {
       ...datas,
       userId: currentUser._id,
@@ -182,6 +184,10 @@ export default function AddProperties() {
     };
     console.log(data);
     const api = await axios.post("http://localhost:3000/api/prop/create", data);
+    if (api.status === 201) {
+      // alert("Property added successfully")
+      setDisabled(false);
+    }
   };
   return (
     <div className="px-4 mt-2 w-full h-screen ">
@@ -459,7 +465,12 @@ export default function AddProperties() {
                   </p>
                 )} */}
               </div>
-              <Button color="blue" className=" mt-5" type="submit">
+              <Button
+                color="blue"
+                className=" mt-5"
+                type="submit"
+                disabled={disabled}
+              >
                 Submit
               </Button>
             </form>
