@@ -16,9 +16,7 @@ export default function Home() {
   useEffect(() => {
     const func = async () => {
       try {
-        const api = await axios.get(
-          `https://rentifyserver.onrender.com/api/prop/get`
-        );
+        const api = await axios.get(`http://35.154.220.126:3000/api/prop/get`);
         setData(api.data.prop);
       } catch (error) {
         console.log(error);
@@ -147,9 +145,7 @@ export default function Home() {
   ];
   const handleAll = async () => {
     try {
-      const api = await axios.get(
-        `https://rentifyserver.onrender.com/api/prop/get`
-      );
+      const api = await axios.get(`http://35.154.220.126:3000/api/prop/get`);
       setData(api.data.prop);
     } catch (error) {
       console.log(error);
@@ -159,7 +155,7 @@ export default function Home() {
   const handlesale = async () => {
     try {
       const api = await axios.get(
-        `https://rentifyserver.onrender.com/api/prop/get?for_=sale`
+        `http://35.154.220.126:3000/api/prop/get?for_=sale`
       );
       setData(api.data.prop);
     } catch (error) {
@@ -169,7 +165,7 @@ export default function Home() {
   const handleRent = async () => {
     try {
       const api = await axios.get(
-        `https://rentifyserver.onrender.com/api/prop/get?for_=rent`
+        `http://35.154.220.126:3000/api/prop/get?for_=rent`
       );
       setData(api.data.prop);
     } catch (error) {
@@ -179,7 +175,7 @@ export default function Home() {
   const handleCity = async (city) => {
     try {
       const api = await axios.get(
-        `https://rentifyserver.onrender.com/api/prop/get?city=${city}`
+        `http://35.154.220.126:3000/api/prop/get?city=${city}`
       );
       setData(api.data.prop);
     } catch (error) {

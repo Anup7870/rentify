@@ -23,7 +23,7 @@ export default function AllProps() {
     const func = async () => {
       try {
         const api = await axios.get(
-          `https://rentifyserver.onrender.com/api/prop/get?userId=${currentUser._id}`
+          `http://35.154.220.126:3000/api/prop/get?userId=${currentUser._id}`
         );
         console.log(api.data.prop);
         setData(api.data.prop);
