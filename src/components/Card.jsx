@@ -20,6 +20,9 @@ export default function ({ data }) {
     }
   }, []);
   const handleLike = async () => {
+    if (!currentUser) {
+      window.location.href = "/signin";
+    }
     try {
       const like = await axios.post(
         `https://rentifyserver.onrender.com/api/prop/like`,
@@ -41,7 +44,7 @@ export default function ({ data }) {
   const handelClick = async () => {
     // it current user is not signed in then redirect to login page
     if (!currentUser) {
-      window.location.href = "/login";
+      window.location.href = "/signin";
     }
     // send email to the owner of the property and the user
     try {
