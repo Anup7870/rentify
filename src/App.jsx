@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav";
@@ -9,7 +9,9 @@ import DashBoard from "./pages/DashBoard.jsx";
 import Home from "./pages/Home.jsx";
 function App() {
   const [count, setCount] = useState(0);
-
+  useEffect(()=>{
+    alert("Kindely wait 30 to 60 sec to start server and refresh");
+  },[])
   return (
     <>
       <Nav />
