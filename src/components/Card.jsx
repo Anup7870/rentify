@@ -25,7 +25,7 @@ export default function ({ data }) {
     }
     try {
       const like = await axios.post(
-        `http://35.154.220.126:3000/api/prop/like`,
+        `https://rentifyserver.onrender.com/api/prop/like`,
         {
           propId: data._id,
           userId: currentUser._id,

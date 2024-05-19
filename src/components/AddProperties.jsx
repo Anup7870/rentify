@@ -184,7 +184,7 @@ export default function AddProperties() {
     };
     console.log(data);
     const api = await axios.post(
-      "http://35.154.220.126:3000/api/prop/create",
+      "https://rentifyserver.onrender.com/api/prop/create",
       data
     );
     if (api.status === 201) {

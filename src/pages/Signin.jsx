@@ -27,7 +27,7 @@ export default function Signup() {
     try {
       dispatch(signinStart());
       const api = await axios.post(
-        "http://35.154.220.126:3000/api/auth/signin",
+        "https://rentifyserver.onrender.com/api/auth/signin",
         e
       );
       console.log(api.data);

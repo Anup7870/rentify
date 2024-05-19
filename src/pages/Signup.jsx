@@ -18,7 +18,7 @@ export default function Signup() {
   const onSubmit = async (e) => {
     console.log(e);
     const api = await axios.post(
-      "http://35.154.220.126:3000/api/auth/signup",
+      "https://rentifyserver.onrender.com/api/auth/signup",
       e
     );
     if (api.status === 201) {

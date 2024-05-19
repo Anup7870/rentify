@@ -175,7 +175,7 @@ export default function Home() {
   const handleCity = async (city) => {
     try {
       const api = await axios.get(
-        `http://35.154.220.126:3000/api/prop/get?city=${city}`
+        `https://rentifyserver.onrender.com/api/prop/get?city=${city}`
       );
       setData(api.data.prop);
     } catch (error) {
